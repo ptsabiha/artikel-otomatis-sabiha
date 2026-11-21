@@ -1,4 +1,55 @@
 {
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
-  "artikel": []
+  "artikel": [
+    {
+      "id": "2026-11-23-1900-wali-murid-tanya-sekolah-gratis-di-grup-wa",
+      "judul": "Wali Murid Ramai Tanya Sekolah Gratis di Grup WA: Begini Cara Menanganinya",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-23T19:00:00+07:00",
+      "hash": "120c6245711677f2",
+      "sampul": true,
+      "sampul_kunci": "7f05aa6ba5d10dce",
+      "batal": false
+    },
+    {
+      "id": "2026-11-23-1200-sekolah-swasta-gratis-yang-jelas-dan-belum",
+      "judul": "Sekolah Swasta Gratis: Apa yang Sudah Jelas dan Apa yang Belum bagi Yayasan",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-23T12:00:00+07:00",
+      "hash": "67cddc855e70a2b3",
+      "sampul": true,
+      "sampul_kunci": "122331f9e9836c29",
+      "batal": false
+    },
+    {
+      "id": "2026-11-23-0700-memahami-aturan-dana-bosp-untuk-yayasan",
+      "judul": "Cara Membaca Aturan Dana BOSP Terbaru agar Laporan Sekolah Tidak Molor",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-23T07:00:00+07:00",
+      "hash": "45f78a4ef5ec6a31",
+      "sampul": true,
+      "sampul_kunci": "4cb75b25ec1975af",
+      "batal": false
+    },
+    {
+      "id": "2026-11-22-1900-guru-terbaik-resign-apa-yang-dilakukan",
+      "judul": "Guru Terbaik Tiba-tiba Resign: Penyebab dan Langkah yang Bisa Diambil Yayasan",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-22T19:00:00+07:00",
+      "hash": "bc006269bdc6d1d5",
+      "sampul": true,
+      "sampul_kunci": "cfb6841ecb5b6af0",
+      "batal": false
+    },
+    {
+      "id": "2026-11-22-1200-kabar-guru-non-asn-dan-artinya-bagi-yayasan",
+      "judul": "Kabar Guru Non-ASN 2027: Apa Artinya bagi Yayasan Swasta?",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-22T12:00:00+07:00",
+      "hash": "cff51d0935c81e01",
+      "sampul": true,
+      "sampul_kunci": "82763cae94525fde",
+      "batal": false
+    }
+  ]
 }
