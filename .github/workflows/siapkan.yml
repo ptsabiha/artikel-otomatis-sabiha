@@ -1,0 +1,59 @@
+name: Siapkan dan kirim artikel
+
+# Routine Claude menaruh artikel di antrean/<id>/artikel.json lalu push.
+# Workflow ini memeriksa, membuat sampul, menulis daftar.json, lalu meminta
+# ptsabiha.com menarik artikelnya. Jalan juga setiap jam sebagai cadangan.
+on:
+  push:
+    branches: [main]
+    paths: ['antrean/**', 'sampul/**', 'alat/**']
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: siapkan-artikel
+  cancel-in-progress: false
+
+jobs:
+  siapkan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Periksa artikel dan buat sampul
+        run: node alat/siapkan.mjs
+
+      - name: Simpan daftar.json dan sampul
+        run: |
+          git config user.name "artikel-otomatis[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A daftar.json laporan-cek.txt antrean
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan."
+          else
+            git commit -q -m "Siapkan artikel (daftar.json dan sampul)"
+            git pull -q --rebase origin main
+            git push -q origin HEAD:main
+            # Beri waktu CDN raw.githubusercontent.com menyegarkan berkas.
+            sleep 45
+          fi
+
+      - name: Minta ptsabiha.com menarik artikel
+        run: |
+          code=$(curl -sS -o hasil.json -w '%{http_code}' --max-time 120 -X POST -H 'Accept: application/json' https://ptsabiha.com/artikel/segarkan || echo 000)
+          echo "HTTP $code"; cat hasil.json 2>/dev/null; echo
+          if [ "$code" != "200" ] && [ "$code" != "429" ]; then
+            echo "::warning::ptsabiha.com menjawab HTTP $code. Artikel tetap aman di repo dan dicoba lagi tiap jam."
+          fi
+
+      - name: Tampilkan artikel yang tidak lolos
+        run: |
+          if ! grep -q "Semua artikel lolos" laporan-cek.txt; then
+            cat laporan-cek.txt
+            echo "::warning::Ada artikel yang tidak lolos pemeriksaan (lihat laporan-cek.txt)."
+          fi
