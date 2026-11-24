@@ -2,6 +2,36 @@
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
   "artikel": [
     {
+      "id": "2026-11-25-1900-laporan-keuangan-diminta-mendadak-pembina",
+      "judul": "Laporan Keuangan Diminta Mendadak: Mengapa Bendahara Panik dan Cara Mengatasinya",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-25T19:00:00+07:00",
+      "hash": "1c7172a5003c646c",
+      "sampul": true,
+      "sampul_kunci": "b7c90dde7e4d82a2",
+      "batal": false
+    },
+    {
+      "id": "2026-11-25-1200-revitalisasi-sekolah-swasta-boleh-mengajukan",
+      "judul": "Revitalisasi Sekolah Terbuka bagi Swasta: Apa yang Perlu Disiapkan Yayasan",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-25T12:00:00+07:00",
+      "hash": "2ba1ff7e77253dfc",
+      "sampul": true,
+      "sampul_kunci": "90762c39070d951d",
+      "batal": false
+    },
+    {
+      "id": "2026-11-25-0700-menyusun-rapbs-sederhana-yayasan-kecil",
+      "judul": "Menyusun RAPBS Sederhana untuk Yayasan Kecil, Langkah demi Langkah",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-25T07:00:00+07:00",
+      "hash": "63c66c1509261698",
+      "sampul": true,
+      "sampul_kunci": "ee121bcc4cf02aa3",
+      "batal": false
+    },
+    {
       "id": "2026-11-24-1900-wali-murid-menunggak-spp-menagih-tanpa-mengorbankan-anak",
       "judul": "Wali Murid Menunggak SPP: Cara Menagih Tanpa Mengorbankan Anak",
       "kategori": "manajemen-yayasan",
