@@ -11,5 +11,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Personil_SDN_Cibubur_04_Pagi.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Personil_SDN_Cibubur_04_Pagi.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Dodi hudanjaya",
+    "lisensi": "CC BY-SA 4.0",
+    "keterangan": "Kepala sekolah, guru, dan staf SDN Cibubur 04 Pagi Jakarta berfoto bersama di halaman sekolah"
+  },
   "batal": false
 }

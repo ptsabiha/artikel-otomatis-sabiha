@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 // Alat antrean Artikel Otomatis SABIHA. Tanpa paket npm.
 //
-//   node alat/siapkan.mjs cek <id> [<id> ...]   periksa artikel (dipakai routine sebelum push)
-//   node alat/siapkan.mjs                       periksa semua, buat sampul yang belum ada,
+//   node alat/siapkan.mjs cek <id> [<id> ...]   periksa artikel + unduh fotonya (dipakai routine sebelum push)
+//   node alat/siapkan.mjs                       periksa semua, buat sampul dari foto bila belum ada/berubah,
 //                                               tulis daftar.json + laporan-cek.txt (GitHub Actions)
 //   node alat/siapkan.mjs --tanpa-sampul        sama, tanpa membuat sampul (mis. tidak ada Chrome)
 //
+// Sampul = foto asli berlisensi bebas (kolom "foto" di artikel.json), dipotong 1280x720 tanpa teks.
 // Artikel yang tidak lolos pemeriksaan TIDAK masuk daftar.json, jadi tidak ditarik situs.
 
 import { createHash } from 'node:crypto';
@@ -13,15 +14,17 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { cekIsianFoto, kunciFoto, unduhFoto } from './foto.mjs';
 
 const AKAR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ANTREAN = join(AKAR, 'antrean');
 const DAFTAR = join(AKAR, 'daftar.json');
+const SAMPUL = 'sampul.jpg';
 
 export const KATEGORI = {
-  'manajemen-yayasan': { nama: 'Manajemen Yayasan', warna: '#F2B705', teks: '#0E2A4F', gelap: '#1F4E8C', minSumber: 1 },
-  'isu-pendidikan': { nama: 'Isu Pendidikan', warna: '#E04A50', teks: '#ffffff', gelap: '#C0262D', minSumber: 2 },
-  'bantuan-dan-lomba': { nama: 'Bantuan & Lomba', warna: '#2BB38A', teks: '#ffffff', gelap: '#0F7B5F', minSumber: 2 },
+  'manajemen-yayasan': { nama: 'Manajemen Yayasan', minSumber: 1 },
+  'isu-pendidikan': { nama: 'Isu Pendidikan', minSumber: 2 },
+  'bantuan-dan-lomba': { nama: 'Bantuan & Lomba', minSumber: 2 },
 };
 const PRODUK = ['akadiva', 'modul-ajar', 'kurir-atk'];
 const POLA_ID = /^(\d{4}-\d{2}-\d{2})-(\d{2})(\d{2})-[a-z0-9-]{3,120}$/;
@@ -42,8 +45,8 @@ function bacaArtikel(id) {
   }
 }
 
-/** Periksa satu artikel. Mengembalikan daftar masalah (kosong = lolos). */
-export function cekArtikel(id, data, judulLain = []) {
+/** Periksa satu artikel (tanpa mengunduh foto). Mengembalikan daftar masalah (kosong = lolos). */
+export function cekArtikel(id, data, judulLain = [], fotoLain = []) {
   const masalah = [];
   const m = POLA_ID.exec(id);
   if (!m) masalah.push('nama folder harus YYYY-MM-DD-HHMM-judul-pendek (huruf kecil, angka, tanda hubung)');
@@ -86,6 +89,11 @@ export function cekArtikel(id, data, judulLain = []) {
   if (!Array.isArray(produk) || produk.some((p) => !PRODUK.includes(p))) masalah.push(`produk hanya boleh: ${PRODUK.join(', ')}`);
   if ('batal' in data && typeof data.batal !== 'boolean') masalah.push('batal harus true atau false');
 
+  masalah.push(...cekIsianFoto(data.foto));
+  const kf = kunciFoto(data.foto);
+  const dobel = kf && fotoLain.find((f) => f.kunci === kf);
+  if (dobel) masalah.push(`foto yang sama sudah dipakai artikel ${dobel.id}; cari foto lain`);
+
   return masalah;
 }
 
@@ -104,61 +112,77 @@ function cariChrome() {
   return calon.find((p) => existsSync(p)) ?? null;
 }
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function buatSampul(chrome, id, data) {
-  const k = KATEGORI[data.kategori];
-  const judul = String(data.judul).trim();
-  const ukuran = judul.length > 85 ? 54 : judul.length > 60 ? 62 : 72;
+/** Potong foto menjadi sampul 1280x720 (JPEG) lewat Chrome headless. Tanpa teks di atasnya. */
+function buatSampul(chrome, id, data, foto) {
+  const berkasFoto = join(AKAR, 'sampul', `_foto.${foto.jenis}`);
+  writeFileSync(berkasFoto, foto.buf);
   const html = readFileSync(join(AKAR, 'sampul', 'cetakan.html'), 'utf8')
-    .replaceAll('{{JUDUL}}', esc(judul))
-    .replaceAll('{{KATEGORI}}', esc(k.nama))
-    .replaceAll('{{WARNA}}', k.warna)
-    .replaceAll('{{WARNA_TEKS}}', k.teks)
-    .replaceAll('{{WARNA_GELAP}}', k.gelap)
-    .replaceAll('{{UKURAN}}', String(ukuran));
+    .replaceAll('{{FOTO}}', esc(pathToFileURL(berkasFoto).href))
+    .replaceAll('{{POSISI}}', esc(data.foto.posisi ?? 'center'));
   const sementara = join(AKAR, 'sampul', '_sementara.html');
   writeFileSync(sementara, html);
-  const keluar = join(ANTREAN, id, 'sampul.png');
+  const keluar = join(ANTREAN, id, SAMPUL);
   try {
     execFileSync(chrome, [
       '--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', '--no-first-run',
-      '--force-device-scale-factor=1', '--window-size=1280,720', '--virtual-time-budget=6000',
-      `--screenshot=${keluar}`, pathToFileURL(sementara).href,
+      '--allow-file-access-from-files', '--force-device-scale-factor=1', '--window-size=1280,720',
+      '--virtual-time-budget=6000', `--screenshot=${keluar}`, pathToFileURL(sementara).href,
     ], { stdio: 'ignore', timeout: 90_000 });
   } finally {
     unlinkSync(sementara);
+    unlinkSync(berkasFoto);
   }
+  // Sampul lama (banner teks) tidak dipakai lagi.
+  const lama = join(ANTREAN, id, 'sampul.png');
+  if (existsSync(keluar) && existsSync(lama)) unlinkSync(lama);
   return existsSync(keluar);
 }
 
-function judulTerpakai(kecuali) {
+function terpakai(kecuali) {
   const judul = [];
+  const foto = [];
   for (const id of semuaId()) {
     if (id === kecuali) continue;
     const { data } = bacaArtikel(id);
-    if (data?.judul && !data.batal) judul.push(String(data.judul));
+    if (!data || data.batal) continue;
+    if (data.judul) judul.push(String(data.judul));
+    const kunci = kunciFoto(data.foto);
+    if (kunci) foto.push({ id, kunci });
   }
-  return judul;
+  return { judul, foto };
 }
 
-function perintahCek(ids) {
+async function perintahCek(ids) {
   let gagal = 0;
   for (const id of ids) {
     const { data, galat } = bacaArtikel(id);
-    const masalah = galat ?? cekArtikel(id, data, judulTerpakai(id));
+    const lain = terpakai(id);
+    const masalah = galat ?? cekArtikel(id, data, lain.judul, lain.foto);
+    let info = '';
+    if (!galat && !masalah.some((x) => x.startsWith('foto.berkas') || x.startsWith('"foto"'))) {
+      const f = await unduhFoto(String(data.foto.berkas));
+      if (f.jaringan) {
+        // Jaringan di sini memblokir; GitHub Actions tetap mengunduh dan memeriksa fotonya.
+        info = ` (PERINGATAN: ${f.masalah[0]}; pastikan alamatnya benar lewat WebFetch, GitHub Actions memeriksa ulang)`;
+      } else {
+        masalah.push(...f.masalah);
+        if (f.buf) info = ` (foto ${f.lebar}x${f.tinggi} ${f.jenis})`;
+      }
+    }
     if (masalah.length) {
       gagal++;
       console.log(`TIDAK LOLOS ${id}`);
       for (const x of masalah) console.log('  - ' + x);
     } else {
-      console.log(`lolos ${id}`);
+      console.log(`lolos ${id}${info}`);
     }
   }
   process.exit(gagal ? 1 : 0);
 }
 
-function perintahSiapkan(tanpaSampul) {
+async function perintahSiapkan(tanpaSampul) {
   const lama = existsSync(DAFTAR) ? JSON.parse(readFileSync(DAFTAR, 'utf8')) : { artikel: [] };
   const kunciLama = new Map((lama.artikel ?? []).map((a) => [a.id, a.sampul_kunci]));
   const chrome = tanpaSampul ? null : cariChrome();
@@ -167,25 +191,40 @@ function perintahSiapkan(tanpaSampul) {
   const artikel = [];
   const laporan = [];
   const judulDipakai = [];
+  const fotoDipakai = [];
   for (const id of semuaId()) {
     const { data, mentah, galat } = bacaArtikel(id);
-    const masalah = galat ?? cekArtikel(id, data, data?.batal ? [] : judulDipakai);
+    const masalah = galat ?? cekArtikel(id, data, data?.batal ? [] : judulDipakai, data?.batal ? [] : fotoDipakai);
     if (masalah.length) {
       laporan.push(`TIDAK LOLOS ${id}\n` + masalah.map((x) => '  - ' + x).join('\n'));
       continue;
     }
-    if (!data.batal) judulDipakai.push(data.judul);
+    if (!data.batal) {
+      judulDipakai.push(data.judul);
+      fotoDipakai.push({ id, kunci: kunciFoto(data.foto) });
+    }
 
-    const kunciSampul = hash(`${data.judul}|${data.kategori}`);
-    const berkasSampul = join(ANTREAN, id, 'sampul.png');
+    const kunciSampul = hash(`foto|${data.foto.berkas}|${data.foto.posisi ?? 'center'}`);
+    const berkasSampul = join(ANTREAN, id, SAMPUL);
     let adaSampul = existsSync(berkasSampul);
     if (chrome && !data.batal && (!adaSampul || kunciLama.get(id) !== kunciSampul)) {
+      const f = await unduhFoto(String(data.foto.berkas));
+      if (f.masalah.length || !f.buf) {
+        laporan.push(`TIDAK LOLOS ${id}\n` + f.masalah.map((x) => '  - ' + x).join('\n'));
+        continue;
+      }
       try {
-        adaSampul = buatSampul(chrome, id, data);
-        console.log(`sampul dibuat: ${id}`);
+        adaSampul = buatSampul(chrome, id, data, f);
+        console.log(`sampul dibuat dari foto: ${id}`);
       } catch (e) {
         laporan.push(`SAMPUL GAGAL ${id}: ${e.message}`);
+        continue;
       }
+    }
+    // Artikel wajib bersampul foto; tanpa sampul tidak dikirim ke situs.
+    if (!adaSampul && !data.batal) {
+      if (!tanpaSampul) laporan.push(`TIDAK LOLOS ${id}\n  - sampul foto belum dibuat`);
+      continue;
     }
     const sampulMentah = adaSampul ? readFileSync(berkasSampul) : Buffer.alloc(0);
 
@@ -196,6 +235,7 @@ function perintahSiapkan(tanpaSampul) {
       terbit: data.terbit,
       hash: hash(Buffer.concat([mentah, sampulMentah])),
       sampul: adaSampul,
+      sampul_berkas: SAMPUL,
       sampul_kunci: kunciSampul,
       batal: Boolean(data.batal),
     });
@@ -214,7 +254,7 @@ function perintahSiapkan(tanpaSampul) {
 const [perintah, ...sisa] = process.argv.slice(2);
 if (perintah === 'cek') {
   if (!sisa.length) { console.log('Pakai: node alat/siapkan.mjs cek <id> [<id> ...]'); process.exit(2); }
-  perintahCek(sisa);
+  await perintahCek(sisa);
 } else {
-  perintahSiapkan(perintah === '--tanpa-sampul');
+  await perintahSiapkan(perintah === '--tanpa-sampul');
 }

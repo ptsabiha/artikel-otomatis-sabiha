@@ -2,39 +2,14 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=block" rel="stylesheet">
 <style>
-  /* Sampul artikel otomatis 1280x720 (16:9). Diisi oleh alat/siapkan.mjs. */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1280px; height: 720px; overflow: hidden; }
-  body {
-    font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
-    background: radial-gradient(circle at 88% 8%, rgba(255,255,255,.10) 0 180px, transparent 181px),
-                radial-gradient(circle at 96% 40%, rgba(255,255,255,.06) 0 120px, transparent 121px),
-                linear-gradient(135deg, #1F4E8C 0%, #0E2A4F 70%);
-    color: #fff;
-    position: relative;
-  }
-  .garis { position: absolute; left: 0; top: 0; bottom: 120px; width: 14px; background: {{WARNA}}; }
-  .isi { position: absolute; left: 96px; right: 120px; top: 70px; bottom: 150px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
-  .label { align-self: flex-start; background: {{WARNA}}; color: {{WARNA_TEKS}}; font-weight: 800; font-size: 26px; letter-spacing: .04em; text-transform: uppercase; padding: 10px 22px; border-radius: 999px; }
-  h1 { font-weight: 800; font-size: {{UKURAN}}px; line-height: 1.12; letter-spacing: -.015em; text-wrap: balance; }
-  .bawah { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 96px; }
-  .bawah img { height: 74px; }
-  .bawah span { color: #0E2A4F; font-weight: 700; font-size: 28px; }
-  .bawah span b { color: {{WARNA_GELAP}}; }
+  /* Sampul artikel otomatis 1280x720 (16:9): foto asli saja, tanpa teks. Diisi oleh alat/siapkan.mjs. */
+  * { margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 720px; overflow: hidden; background: #0E2A4F; }
+  img { display: block; width: 1280px; height: 720px; object-fit: cover; object-position: {{POSISI}}; }
 </style>
 </head>
 <body>
-  <div class="garis"></div>
-  <div class="isi">
-    <div class="label">{{KATEGORI}}</div>
-    <h1>{{JUDUL}}</h1>
-  </div>
-  <div class="bawah">
-    <img src="logo-sabiha.png" alt="">
-    <span>ptsabiha.com/<b>artikel</b></span>
-  </div>
+  <img src="{{FOTO}}" alt="">
 </body>
 </html>

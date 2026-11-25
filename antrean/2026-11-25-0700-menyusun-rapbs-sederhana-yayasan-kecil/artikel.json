@@ -17,5 +17,13 @@
   "produk": [
     "akadiva"
   ],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Ilustrasi_Uang_Kertas_dan_Uang_Logam.jpg/1920px-Ilustrasi_Uang_Kertas_dan_Uang_Logam.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Ilustrasi_Uang_Kertas_dan_Uang_Logam.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Yuni Yustikasari",
+    "lisensi": "Public domain",
+    "keterangan": "Uang kertas dan uang logam rupiah di atas meja"
+  },
   "batal": false
 }

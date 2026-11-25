@@ -13,5 +13,13 @@
   "produk": [
     "akadiva"
   ],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Analyzing_Financial_Data_%285099605109%29.jpg/1920px-Analyzing_Financial_Data_%285099605109%29.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Analyzing_Financial_Data_(5099605109).jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Dave Dugdale from Superior, USA",
+    "lisensi": "CC BY-SA 2.0",
+    "keterangan": "Tangan memeriksa laporan keuangan dengan kalkulator dan pena"
+  },
   "batal": false
 }

@@ -11,5 +11,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Rapat_Kerja_PP_HTCI_2017-2019.jpg/1920px-Rapat_Kerja_PP_HTCI_2017-2019.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Rapat_Kerja_PP_HTCI_2017-2019.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Masnano",
+    "lisensi": "CC BY-SA 4.0",
+    "keterangan": "Rapat kerja pengurus sebuah organisasi di ruang pertemuan"
+  },
   "batal": false
 }

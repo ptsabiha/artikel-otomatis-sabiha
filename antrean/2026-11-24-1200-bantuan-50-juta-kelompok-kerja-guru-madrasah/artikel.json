@@ -15,5 +15,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Pelatihan_Guru_SMK.jpg/1920px-Pelatihan_Guru_SMK.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Pelatihan_Guru_SMK.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Singgih Afifa Putra",
+    "lisensi": "CC BY-SA 4.0",
+    "keterangan": "Guru SMK mengikuti pelatihan peningkatan kompetensi teknologi informasi"
+  },
   "batal": false
 }

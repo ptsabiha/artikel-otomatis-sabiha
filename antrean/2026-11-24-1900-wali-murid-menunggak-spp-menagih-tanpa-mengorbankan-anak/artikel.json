@@ -13,5 +13,13 @@
   "produk": [
     "akadiva"
   ],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Ubud_Bali_Indonesia_Motorcycle-at-Jalan-Raya-Ubud-01.jpg/1920px-Ubud_Bali_Indonesia_Motorcycle-at-Jalan-Raya-Ubud-01.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Ubud_Bali_Indonesia_Motorcycle-at-Jalan-Raya-Ubud-01.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "CEphoto, Uwe Aranas",
+    "lisensi": "CC BY-SA 4.0",
+    "keterangan": "Seorang ibu mengantar anak-anaknya ke sekolah dengan sepeda motor di Ubud, Bali"
+  },
   "batal": false
 }

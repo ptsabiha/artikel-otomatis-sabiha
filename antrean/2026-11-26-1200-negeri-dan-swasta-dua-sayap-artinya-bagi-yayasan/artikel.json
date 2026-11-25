@@ -15,5 +15,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Decentralized_Basic_Education_in_Indonesia.jpg/1920px-Decentralized_Basic_Education_in_Indonesia.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Decentralized_Basic_Education_in_Indonesia.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "USAID Indonesia",
+    "lisensi": "Public domain",
+    "keterangan": "Siswa sekolah dasar membaca buku bersama di perpustakaan kelas"
+  },
   "batal": false
 }

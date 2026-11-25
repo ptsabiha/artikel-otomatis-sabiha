@@ -11,5 +11,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/The_atmosphere_of_a_junior_high_school_classroom_in_Indonesia.jpg/1920px-The_atmosphere_of_a_junior_high_school_classroom_in_Indonesia.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:The_atmosphere_of_a_junior_high_school_classroom_in_Indonesia.jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Fitrah 9131",
+    "lisensi": "CC BY 3.0",
+    "keterangan": "Suasana belajar di kelas sebuah SMP di Indonesia dengan layar interaktif"
+  },
   "batal": false
 }

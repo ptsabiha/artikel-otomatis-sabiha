@@ -19,5 +19,13 @@
     }
   ],
   "produk": [],
+  "foto": {
+    "berkas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Australia_Indonesia_Basic_Education_Program%2C_Indonesia_2007._Photo-_AusAID_%2810673300934%29.jpg/1920px-Australia_Indonesia_Basic_Education_Program%2C_Indonesia_2007._Photo-_AusAID_%2810673300934%29.jpg",
+    "halaman": "https://commons.wikimedia.org/wiki/File:Australia_Indonesia_Basic_Education_Program,_Indonesia_2007._Photo-_AusAID_(10673300934).jpg",
+    "situs": "Wikimedia Commons",
+    "kredit": "Department of Foreign Affairs and Trade",
+    "lisensi": "CC BY 2.0",
+    "keterangan": "Papan proyek pembangunan gedung madrasah tsanawiyah swasta di Lumajang, Jawa Timur"
+  },
   "batal": false
 }
