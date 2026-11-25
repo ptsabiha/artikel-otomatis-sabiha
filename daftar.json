@@ -2,6 +2,36 @@
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
   "artikel": [
     {
+      "id": "2026-11-26-1900-pengurus-dan-kepala-sekolah-beda-arah",
+      "judul": "Pengurus dan Kepala Sekolah Beda Arah: Cara Meluruskannya",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-26T19:00:00+07:00",
+      "hash": "c1510f727f941edd",
+      "sampul": true,
+      "sampul_kunci": "99c8bbf2c8645a1b",
+      "batal": false
+    },
+    {
+      "id": "2026-11-26-1200-negeri-dan-swasta-dua-sayap-artinya-bagi-yayasan",
+      "judul": "Negeri dan Swasta \"Dua Sayap\" Pendidikan: Apa Artinya bagi Yayasan",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-26T12:00:00+07:00",
+      "hash": "a0002e01f50e4142",
+      "sampul": true,
+      "sampul_kunci": "6cc5713edf7e4003",
+      "batal": false
+    },
+    {
+      "id": "2026-11-26-0700-rapor-pendidikan-bahan-rapat-evaluasi-mutu",
+      "judul": "Rapor Pendidikan sebagai Bahan Rapat Evaluasi Mutu Yayasan",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-26T07:00:00+07:00",
+      "hash": "7ab6af0c244ba282",
+      "sampul": true,
+      "sampul_kunci": "996c9a39d97f7bf4",
+      "batal": false
+    },
+    {
       "id": "2026-11-25-1900-laporan-keuangan-diminta-mendadak-pembina",
       "judul": "Laporan Keuangan Diminta Mendadak: Mengapa Bendahara Panik dan Cara Mengatasinya",
       "kategori": "manajemen-yayasan",
