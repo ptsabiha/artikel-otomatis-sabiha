@@ -2,6 +2,39 @@
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
   "artikel": [
     {
+      "id": "2026-11-27-1900-dana-bos-tertahan-data-tidak-cocok",
+      "judul": "Dana BOS Tertahan karena Data Tidak Cocok: Kisah Yayasan Kecil dan Cara Membereskannya",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-27T19:00:00+07:00",
+      "hash": "cba4e806722d1602",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "7846ffeea5bca0b6",
+      "batal": false
+    },
+    {
+      "id": "2026-11-27-1200-174-ribu-guru-belum-sarjana-peran-yayasan",
+      "judul": "174 Ribu Guru Belum Sarjana: Apa yang Bisa Dilakukan Yayasan untuk Guru Kita",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-27T12:00:00+07:00",
+      "hash": "0fa49e5fe0faa60e",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "17cba87b8de5d98f",
+      "batal": false
+    },
+    {
+      "id": "2026-11-27-0700-kalender-persiapan-murid-baru-yayasan",
+      "judul": "Kalender Persiapan Murid Baru: Apa yang Perlu Dikerjakan Yayasan Mulai Sekarang",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-27T07:00:00+07:00",
+      "hash": "dc54fa0e10fd0b54",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "2fe9696c0aa8f787",
+      "batal": false
+    },
+    {
       "id": "2026-11-26-1900-pengurus-dan-kepala-sekolah-beda-arah",
       "judul": "Pengurus dan Kepala Sekolah Beda Arah: Cara Meluruskannya",
       "kategori": "manajemen-yayasan",
