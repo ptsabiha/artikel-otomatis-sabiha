@@ -2,6 +2,39 @@
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
   "artikel": [
     {
+      "id": "2026-11-28-1900-pendaftar-murid-baru-turun-cara-menelusuri-penyebab",
+      "judul": "Pendaftar Murid Baru Turun: Cara Yayasan Menelusuri Penyebabnya",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-28T19:00:00+07:00",
+      "hash": "7472a15d7c04381b",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "7a28f5335acacd79",
+      "batal": false
+    },
+    {
+      "id": "2026-11-28-1200-wacana-siswa-tidak-otomatis-naik-kelas",
+      "judul": "Wacana Siswa Tidak Otomatis Naik Kelas: yang Perlu Disiapkan Yayasan",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-28T12:00:00+07:00",
+      "hash": "fde2ebd7566fc957",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "943aa774d11beca6",
+      "batal": false
+    },
+    {
+      "id": "2026-11-28-0700-jadwal-pemeliharaan-gedung-sekolah-sederhana",
+      "judul": "Jadwal Pemeliharaan Gedung Sekolah yang Sederhana dan Bisa Dijalankan",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-28T07:00:00+07:00",
+      "hash": "d21bb5c110b475e5",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "abfcb45211d4c166",
+      "batal": false
+    },
+    {
       "id": "2026-11-27-1900-dana-bos-tertahan-data-tidak-cocok",
       "judul": "Dana BOS Tertahan karena Data Tidak Cocok: Kisah Yayasan Kecil dan Cara Membereskannya",
       "kategori": "manajemen-yayasan",
