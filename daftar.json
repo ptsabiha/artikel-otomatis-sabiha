@@ -2,6 +2,39 @@
   "keterangan": "Dibuat otomatis oleh alat/siapkan.mjs. Jangan diubah tangan.",
   "artikel": [
     {
+      "id": "2026-11-29-1900-guru-senior-menolak-administrasi-digital",
+      "judul": "Guru Senior Menolak Administrasi Digital: Cara Mengajak Tanpa Memaksa",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-29T19:00:00+07:00",
+      "hash": "aaa63842340e7a6a",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "5b5d73093273c217",
+      "batal": false
+    },
+    {
+      "id": "2026-11-29-1200-hari-guru-2026-pelajaran-bagi-yayasan",
+      "judul": "Hari Guru 2026 dan Pelajaran untuk Yayasan yang Ingin Gurunya Betah",
+      "kategori": "isu-pendidikan",
+      "terbit": "2026-11-29T12:00:00+07:00",
+      "hash": "727609fa6d47635e",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "8c97a65f0c3ad59b",
+      "batal": false
+    },
+    {
+      "id": "2026-11-29-0700-aturan-gawai-sekolah-bersama-wali-murid",
+      "judul": "Menyusun Aturan Gawai di Sekolah Bersama Wali Murid",
+      "kategori": "manajemen-yayasan",
+      "terbit": "2026-11-29T07:00:00+07:00",
+      "hash": "1d96c3624838bcb0",
+      "sampul": true,
+      "sampul_berkas": "sampul.jpg",
+      "sampul_kunci": "0fb3b9428e0bd2f9",
+      "batal": false
+    },
+    {
       "id": "2026-11-28-1900-pendaftar-murid-baru-turun-cara-menelusuri-penyebab",
       "judul": "Pendaftar Murid Baru Turun: Cara Yayasan Menelusuri Penyebabnya",
       "kategori": "manajemen-yayasan",
